@@ -81,8 +81,48 @@ const getDetailsProduct = (id) => {
   });
 };
 
+const deleteProduct = (id) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const checkProduct = await Product.findOne({
+        _id: id,
+      });
+      if (checkProduct === null) {
+        resolve({
+          status: 'ERR',
+          message: 'The Product is not defined',
+        });
+      }
+      await Product.findByIdAndDelete(id);
+      resolve({
+        status: 'OK',
+        message: 'Delete product success',
+      });
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+const getAllProduct = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const allProduct = await Product.find();
+      resolve({
+        status: 'OK',
+        message: 'Success',
+        data: allProduct,
+      });
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
 module.exports = {
   createProduct,
   updateProduct,
   getDetailsProduct,
+  deleteProduct,
+  getAllProduct,
 };
