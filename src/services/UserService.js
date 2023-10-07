@@ -11,7 +11,7 @@ const createUser = (newUser) => {
       });
       if (checkUser !== null) {
         resolve({
-          status: 'OK',
+          status: 'ERR',
           message: 'The email is already',
         });
       }
@@ -37,7 +37,7 @@ const createUser = (newUser) => {
 
 const loginUSer = (userLogin) => {
   return new Promise(async (resolve, reject) => {
-    const { name, email, password, confirmPassword, phone } = userLogin;
+    const {  email, password } = userLogin;
     try {
       const checkUser = await User.findOne({
         email: email,
