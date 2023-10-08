@@ -36,8 +36,8 @@ const refreshTokenJwtService = (token) => {
           });
         }
         const access_token = await generalAccessToken({
-          id: user?.payload.id,
-          isAdmin: user?.payload.isAdmin,
+          id: user?.id,
+          isAdmin: user?.isAdmin,
         });
 
         resolve({
