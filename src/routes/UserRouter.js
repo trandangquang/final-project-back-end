@@ -8,6 +8,7 @@ const {
 
 router.post('/register', userController.createUser);
 router.post('/login', userController.loginUser);
+router.post('/logout', userController.logoutUser)
 router.put('/update-user/:id', userController.updateUser);
 router.delete('/delete-user/:id', authMiddleWare, userController.deleteUser);
 router.get('/getAll', authMiddleWare, userController.getAllUser);
