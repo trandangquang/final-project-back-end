@@ -35,7 +35,7 @@ const createUser = (newUser) => {
   });
 };
 
-const loginUSer = (userLogin) => {
+const loginUser = (userLogin) => {
   return new Promise(async (resolve, reject) => {
     const {  email, password } = userLogin;
     try {
@@ -164,7 +164,7 @@ const getDetailsUser = (id) => {
 
 module.exports = {
   createUser,
-  loginUSer,
+  loginUser,
   updateUser,
   deleteUser,
   getAllUser,

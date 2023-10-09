@@ -47,14 +47,14 @@ const loginUser = async (req, res) => {
         message: 'Invalid Email Address',
       });
     }
-    const response = await UserService.loginUSer(req.body);
+    const response = await UserService.loginUser(req.body);
     const {refresh_token, ...newResponse} = response
     res.cookie('refresh_token', refresh_token, {
       httpOnly: true,
       secure: false,
-      samesite: 'strict'
+      sameSite: 'strict'
     });
-    return res.status(200).json(newResponse);
+    return res.status(200).json({...newResponse, refresh_token});
   } catch (e) {
     return res.status(404).json({
       message: e,
